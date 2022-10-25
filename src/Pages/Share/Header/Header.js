@@ -2,28 +2,30 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FaLaptopCode } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import logo from '../../../assets/logo.png'
 
 const Header = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="info" variant="light">
             <Container>
-                <Navbar.Brand className="fw-bold" href="#home">
-                    <FaLaptopCode/>
+                <Link to='/' className='text-decoration-none'><Navbar.Brand className="fw-bold" >
+                    
+                    <img src={logo} alt="" style={{height:'50px'}} />
                     <span> Programming-Point</span>
-                    </Navbar.Brand>
+                    
+                    </Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Courses</Nav.Link>
-                        <Nav.Link href="#features">Blog</Nav.Link>
-                        <Nav.Link href="#pricing">FAQ</Nav.Link>
+                        <Link className='nav-link fw-semibold' to="/">Courses</Link>
+                        <Link className='nav-link fw-semibold' to="/blog">Blog</Link>
+                        <Link className='nav-link fw-semibold' to="/faq">FAQ</Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">Sign In</Nav.Link>
-                        <Nav.Link href="#deets">Sign Up</Nav.Link>
-                        <Nav.Link href="#deets">Toggle</Nav.Link>
+                        <Link className='nav-link fw-semibold' to="login-option">Log In</Link>
+                        <Link className='nav-link fw-semibold' to="signup">Sign Up</Link>
+                        <Link className='nav-link fw-semibold' to="#deets">Toggle</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
