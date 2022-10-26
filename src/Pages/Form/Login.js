@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa'
 import { authContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const [error, setError] = useState(null);
+    const navigate=useNavigate();
     const { popUpSignIn, emailSignIn } = useContext(authContext);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -15,7 +16,8 @@ const Login = () => {
     const handleGoogle = () => {
         popUpSignIn(googleProvider)
             .then(result => {
-                console.log(result.user)
+                console.log(result.user);
+                navigate('/')
             })
             .catch(error => console.error(error))
     }
@@ -23,7 +25,8 @@ const Login = () => {
     const handleGithub = () => {
         popUpSignIn(githubProvider)
             .then(result => {
-                console.log(result.user)
+                console.log(result.user);
+                navigate('/')
             })
             .catch(error => console.error(error))
     }
@@ -38,6 +41,7 @@ const Login = () => {
             .then(result => {
                 console.log(result.user);
                 setError('');
+                navigate('/')
             })
             .catch(error => {
                 setError(error);
