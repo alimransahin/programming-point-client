@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa'
+import { authContext } from '../../contexts/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
+    const { googleSignIn }=useContext(authContext);
+    const googleProvider=new GoogleAuthProvider()
+    const handleGoogle=()=>{
+        googleSignIn(googleProvider)
+        .then(result=>{
+            console.log(result.user)
+        }) 
+        .catch(error=>console.error(error))
+    }
     return (
         <div>
         <div className="row gap-3 justify-content-center">
-            <Button className='col-md-5 col-sm-12 p-3' variant="outline-success" size="lg">
+            <Button onClick={handleGoogle} className='col-md-5 col-sm-12 p-3' variant="outline-success" size="lg">
                 <FaGoogle></FaGoogle>
                 <span> Log In by Google</span>
             </Button>

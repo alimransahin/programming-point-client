@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
+import { authContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const {user}=useContext(authContext);
     return (
         <Navbar collapseOnSelect expand="lg" bg="info" variant="light">
             <Container>
@@ -25,7 +27,7 @@ const Header = () => {
                     <Nav>
                         <Link className='nav-link fw-semibold' to="login">Log In</Link>
                         <Link className='nav-link fw-semibold' to="signup">Sign Up</Link>
-                        <Link className='nav-link fw-semibold' to="#deets">Toggle</Link>
+                        <Link className='nav-link fw-semibold' to="/d">{user.displayName}</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
