@@ -4,18 +4,29 @@ import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa'
 import { authContext } from '../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const { googleSignIn }=useContext(authContext);
-    const googleProvider=new GoogleAuthProvider()
-    const handleGoogle=()=>{
-        googleSignIn(googleProvider)
+    const { popUpSignIn }=useContext(authContext);
+    const googleProvider=new GoogleAuthProvider();
+    const githubProvider=new GithubAuthProvider();
+
+        const handleGoogle=()=>{
+        popUpSignIn(googleProvider)
         .then(result=>{
             console.log(result.user)
         }) 
         .catch(error=>console.error(error))
     }
+
+    const handleGithub = () => {
+        popUpSignIn(githubProvider)
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div>
         <div className="row gap-3 justify-content-center">
@@ -23,7 +34,7 @@ const Login = () => {
                 <FaGoogle></FaGoogle>
                 <span> Log In by Google</span>
             </Button>
-            <Button className='col-md-5 col-sm-12  p-3' variant="outline-secondary" size="lg">
+            <Button onClick={handleGithub} className='col-md-5 col-sm-12  p-3' variant="outline-secondary" size="lg">
                 <FaGithub></FaGithub>
                 <span> Log In by Github</span>
             </Button>
