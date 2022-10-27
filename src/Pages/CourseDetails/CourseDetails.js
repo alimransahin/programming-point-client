@@ -16,7 +16,7 @@ const CourseDetails = () => {
             <div ref={ref}>
                 <div className='text-center mb-5 p-5'>
                     <h3 className='bg-dark text-light p-2 rounded'>{title}</h3>
-                    <img src={image} alt="" />
+                    <img src={image} className="img-fluid" alt="" />
                     <div className='mt-5'>
                         <Link to={`/checkout/${id}`}> <Button variant="primary" size="lg">
                             Enroll Now

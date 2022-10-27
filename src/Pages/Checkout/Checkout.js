@@ -8,7 +8,7 @@ const Checkout = () => {
     return (
         <div className='border border-info p-5'>
             <div className='text-center mb-5'>
-                <img src={image} alt="" />
+                <img src={image} className="img-fluid" alt="" />
                 <h3 className='bg-dark text-light my-3 p-2 rounded'>{title}</h3>
                 <h4 className='fs-4'>Instructor: {instructor}</h4>
                 <h6 className='fs-4'>Language: {language}</h6>
