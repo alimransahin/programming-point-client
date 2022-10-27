@@ -11,8 +11,6 @@ const Login = () => {
     const navigate=useNavigate();
     const location=useLocation();
     const from=location.state?.from?.pathname||'/'
-
-
     const { popUpSignIn, emailSignIn } = useContext(authContext);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -41,9 +39,9 @@ const Login = () => {
         const password = form.password.value;
         emailSignIn(email, password)
             .then(result => {
-                console.log(result.user);
                 setError('');
-                navigate(from,{replace:true})
+                navigate(from,{replace:true});
+                form.reset();
             })
             .catch(error => {
                 setError(error.message);
@@ -79,7 +77,7 @@ const Login = () => {
 
                 <Button variant="primary" type="submit">
                     Log In
-                </Button>
+                </Button><br></br>
             <small className='text-muted'>If you have no account, Please <Link to='/signup'>Sign Up </Link> here. </small>
             </Form>
         </div>

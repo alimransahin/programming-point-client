@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div className='bg-info'>
-            footer
+            <span className='text-muted'>&copy 2022 Programming point</span>>
         </div>
     );
 };
