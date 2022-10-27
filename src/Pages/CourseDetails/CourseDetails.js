@@ -1,13 +1,19 @@
 import Button from 'react-bootstrap/Button';
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
 
 const CourseDetails = () => {
     const course = useLoaderData();
     const { image, details, title, duration, instructor, language, price, seats, id } = course;
     return (
-        <div className='border border-info p-5'>
-            <div className='text-center mb-5'>
+        <div className='border border-info '>
+            <div className='text-end'><Pdf targetRef={ref} filename={`${title}.pdf`}>
+                {({ toPdf }) => <button className='btn btn-secondary' onClick={toPdf}>Save as pdf</button>}
+            </Pdf></div>
+            <div className='text-center mb-5 p-5' ref={ref}>
                 <h3 className='bg-dark text-light p-2 rounded'>{title}</h3>
                 <img src={image} alt="" />
                 <div className='mt-5'>
@@ -20,7 +26,7 @@ const CourseDetails = () => {
             </div>
             <div className='row'>
                 <div className="col-md-8">
-                    <p style={{ textAlign: 'justify' }}>{details}</p>
+                    <p style={{ textAlign: 'justify', color:'black' }}>{details}</p>
                 </div>
                 <div className="col-md-4">
                     <h4 className='fs-4'>Instructor: {instructor}</h4>

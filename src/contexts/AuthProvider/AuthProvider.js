@@ -6,6 +6,7 @@ export const authContext=createContext();
 const auth=getAuth(app);
 
 const AuthProvider = ({children}) => {
+    const [theme, setTheme] = useState(false);
     const [user,setUser]=useState(null);
     const [loading,setLoading]=useState(true);
     useEffect(()=>{
@@ -38,7 +39,7 @@ const AuthProvider = ({children}) => {
     return signOut(auth);
     }
 
-    const authInfo = { user, popUpSignIn, emailSignUp, emailSignIn, logOut, loading}
+    const authInfo = { user, popUpSignIn, emailSignUp, emailSignIn, logOut, loading, theme, setTheme }
     return (
         <authContext.Provider value={authInfo}>
             {children}

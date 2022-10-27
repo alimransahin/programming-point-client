@@ -48,7 +48,7 @@ const Login = () => {
                 navigate(from,{replace:true})
             })
             .catch(error => {
-                setError(error);
+                setError(error.message);
             })
     }
 
@@ -75,7 +75,7 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name='password' placeholder="Password" />
                     <Form.Text className="text-danger">
-                    {error?alert(error):""}
+                    {error}
                     </Form.Text>
                 </Form.Group>
 

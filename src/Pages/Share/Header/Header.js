@@ -2,17 +2,26 @@ import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { FaUserAlt } from 'react-icons/fa';
+import { FaMoon, FaSun, FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import { authContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
-    const { user, logOut } = useContext(authContext);
+    const { user, logOut, theme, setTheme } = useContext(authContext);
     const handleLogOut = () => {
         logOut()
             .then(() => { })
             .catch(error => console.error(error));
+    }
+    const handleTheme = () => {
+        if (theme === true) {
+            setTheme(false);
+            console.log(theme);
+        }
+        else {
+            setTheme(true);
+        }
     }
     return (
         <Navbar collapseOnSelect expand="lg" bg="info" variant="light">
@@ -53,7 +62,7 @@ const Header = () => {
                                     <Link className='nav-link fw-semibold' to="signup">Sign Up</Link>
                                 </>
                         }
-
+                        <button className="btn btn-ghost normal-case text-xl" onClick={handleTheme}>{theme === false ? <FaSun/> : <FaMoon></FaMoon>}</button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
