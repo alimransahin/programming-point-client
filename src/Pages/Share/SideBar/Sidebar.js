@@ -15,7 +15,7 @@ const Sidebar = () => {
             <h3 className='text-center fw-semibold mt-5'>Course List</h3>
                 <div className="d-grid gap-2 ">
             {
-                courses.map(course => <Link className="d-grid text-decoration-none" key={course.id} to={`course/:${course.id}`} >
+                courses.map(course => <Link className="d-grid text-decoration-none" key={course.id} to={`course/${course.id}`} >
                     <Button variant="outline-success" size='lg'>
                         {course.title}
                     </Button>
