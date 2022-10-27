@@ -4,7 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const Checkout = () => {
     const course = useLoaderData();
-    const { image, details, title, duration, instructor, language, price, seats, id } = course;
+    const { image, title, duration, instructor, language, price, seats, id } = course;
     return (
         <div className='border border-info p-5'>
             <div className='text-center mb-5'>

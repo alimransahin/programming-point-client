@@ -45,14 +45,12 @@ const Header = () => {
                                 <>
                                     <Link data-bs-toggle="tooltip" data-bs-placement="bottom" title={user?.displayName ? user?.displayName : 'No Name'} className='nav-link fw-semibold' to="/d">
                                         {
-                                            user?.photoURL ?
-                                                <img src={user?.photoURL} alt="" />
+                                            user?.photoURL && user?.photoURL!=null ?
+                                                <img className='circle' width='50px' src={user?.photoURL} alt="" />
                                                 :
                                                 <FaUserAlt></FaUserAlt>
                                         }
                                     </Link>
-
-
                                     <Link className='nav-link fw-semibold' onClick={handleLogOut}>Log Out</Link>
 
                                 </>
@@ -62,7 +60,7 @@ const Header = () => {
                                     <Link className='nav-link fw-semibold' to="signup">Sign Up</Link>
                                 </>
                         }
-                        <button className="btn btn-ghost normal-case text-xl" onClick={handleTheme}>{theme === false ? <FaSun/> : <FaMoon></FaMoon>}</button>
+                        <button className="btn btn-ghost normal-case text-xl" onClick={handleTheme}>{theme === false ? <FaSun /> : <FaMoon></FaMoon>}</button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

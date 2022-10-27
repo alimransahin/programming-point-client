@@ -20,7 +20,6 @@ const Login = () => {
     const handleGoogle = () => {
         popUpSignIn(googleProvider)
             .then(result => {
-                console.log(result.user);
                 navigate(from,{replace:true})
             })
             .catch(error => console.error(error))
@@ -40,7 +39,6 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
         emailSignIn(email, password)
             .then(result => {
                 console.log(result.user);
@@ -82,7 +80,7 @@ const Login = () => {
                 <Button variant="primary" type="submit">
                     Log In
                 </Button>
-                <p><small className='text-muted'>If you have no account, Please <Link to='/signup'>Sign Up </Link> here. </small></p>
+            <small className='text-muted'>If you have no account, Please <Link to='/signup'>Sign Up </Link> here. </small>
             </Form>
         </div>
     );
